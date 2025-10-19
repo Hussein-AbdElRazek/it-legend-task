@@ -1,4 +1,4 @@
-import { UseMutationOptions, DefaultOptions } from '@tanstack/react-query';
+import { UseMutationOptions, DefaultOptions, UseQueryOptions } from '@tanstack/react-query';
 
 export const queryConfig = {
     queries: {
@@ -8,16 +8,17 @@ export const queryConfig = {
     },
 } satisfies DefaultOptions;
 
-export type ApiFnReturnType<FnType extends (...args: any) => Promise<any>> =
+export type ApiFnReturnType<FnType extends (...args: unknown[]) => Promise<unknown>> =
     Awaited<ReturnType<FnType>>;
 
-export type QueryConfig<T extends (...args: any[]) => any> = Omit<
-    ReturnType<T>,
+// Data-centric QueryConfig: pass the query data type TData directly
+export type QueryConfig<TData> = Omit<
+    UseQueryOptions<TData, Error, TData, string[]>,
     'queryKey' | 'queryFn'
 >;
 
 export type MutationConfig<
-    MutationFnType extends (...args: any) => Promise<any>,
+    MutationFnType extends (...args: unknown[]) => Promise<unknown>,
 > = UseMutationOptions<
     ApiFnReturnType<MutationFnType>,
     Error,

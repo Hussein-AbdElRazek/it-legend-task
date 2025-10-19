@@ -5,7 +5,7 @@ const API_URL = process.env.NEXT_PUBLIC_API_URL;
 type RequestOptions = {
     method?: string;
     headers?: Record<string, string>;
-    body?: any;
+    body?: unknown;
     cookie?: string;
     params?: Record<string, string | number | boolean | undefined | null>;
     cache?: RequestCache;
@@ -117,15 +117,15 @@ export const api = {
     {
         return fetchApi<T>(url, { ...options, method: 'GET' });
     },
-    post<T>(url: string, body?: any, options?: RequestOptions): Promise<T>
+    post<T>(url: string, body?: unknown, options?: RequestOptions): Promise<T>
     {
         return fetchApi<T>(url, { ...options, method: 'POST', body });
     },
-    put<T>(url: string, body?: any, options?: RequestOptions): Promise<T>
+    put<T>(url: string, body?: unknown, options?: RequestOptions): Promise<T>
     {
         return fetchApi<T>(url, { ...options, method: 'PUT', body });
     },
-    patch<T>(url: string, body?: any, options?: RequestOptions): Promise<T>
+    patch<T>(url: string, body?: unknown, options?: RequestOptions): Promise<T>
     {
         return fetchApi<T>(url, { ...options, method: 'PATCH', body });
     },

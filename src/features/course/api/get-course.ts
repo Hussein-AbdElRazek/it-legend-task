@@ -5,7 +5,7 @@ import { QueryConfig } from '@/lib/react-query';
 import { Course } from '@/types/api';
 
 export const getCourse = ({
-    courseId,
+    courseId: _courseId,
 }: {
     courseId: string;
 }): Promise<{ data: Course }> =>
@@ -25,7 +25,7 @@ export const getCourseQueryOptions = (courseId: string) =>
 
 type UseCourseOptions = {
     courseId: string;
-    queryConfig?: QueryConfig<typeof getCourseQueryOptions>;
+    queryConfig?: QueryConfig<{ data: Course }>;
 };
 
 export const useCourse = ({
