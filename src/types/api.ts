@@ -49,3 +49,9 @@ export interface CourseTopics
   progress: number;
   topics: Chapter[];
 }
+
+export type TopicFile = Entity<{  
+  courseId: string;
+  title: string;
+  file:string;
+}>;
