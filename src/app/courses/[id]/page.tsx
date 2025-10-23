@@ -1,5 +1,8 @@
-
 import { getCourse } from '@/features/course/api/get-course';
+import TopicVideo from '@/features/topics/components/topic-video';
+import TopicsSection from '@/features/topics/components/topics-section';
+import { Suspense } from 'react';
+import { Skeleton } from '@/components/ui';
 
 export const generateMetadata = async ({
     params,
@@ -17,18 +20,25 @@ export const generateMetadata = async ({
     };
 };
 
-const CourseDetailsPage = () =>
+const CourseDetailsPage = async () =>
 {
-
     return (
         <>
-            <div className="bg-red-300 p-4 lg:col-start-1 lg:row-start-1">1</div>
+            <TopicVideo />
 
-            <div className="bg-green-300 p-4 lg:col-start-2 lg:row-span-2">2</div>
+            <section className={`lg:col-start-2 lg:row-span-2`}>
+                <Suspense fallback={<Skeleton />}>
+                    <TopicsSection />
+                </Suspense>
+            </section>
 
-            <div className="bg-blue-300 p-4 lg:col-start-1 lg:row-start-2">3</div>
+            <section className={`bg-blue-300 p-4 lg:col-start-1 row-start-2`}>
+                links
+                <br />
+                Course materials
+            </section>
         </>
-    )
+    );
 }
 
 export default CourseDetailsPage

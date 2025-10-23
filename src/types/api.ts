@@ -18,3 +18,34 @@ export type Course = Entity<{
   enrolled: number;
   language: string;
 }>;
+
+export type Topic = Entity<{
+  courseId: string;
+  topicId: string;
+  title: string;
+  video:string;
+  poster:string;
+}>;
+
+export type ChapterTopic ={
+  id: string;
+  type: 'video' | 'file' | 'quiz';
+  title: string;
+  completed: boolean;
+  locked: boolean;
+  questionsCount?: number;
+  totalTimeString?: string;
+  totalTimeSeconds?: number;
+}
+
+export type Chapter = Entity<{
+  title: string;
+  description: string;
+  chapterTopics: ChapterTopic[];
+}>;
+
+export interface CourseTopics
+{
+  progress: number;
+  topics: Chapter[];
+}

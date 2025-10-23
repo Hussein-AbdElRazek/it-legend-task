@@ -46,7 +46,7 @@ export const Breadcrumbs = ({ items, showHome = true }: BreadcrumbsProps) =>
                                     {item.label}
                                 </Link>
                             ) : (
-                                <span className={isLast ? "font-medium" : "font-light"}>
+                                <span className={isLast ? "font-bold" : "font-light"}>
                                     {item.label}
                                 </span>
                             )}
