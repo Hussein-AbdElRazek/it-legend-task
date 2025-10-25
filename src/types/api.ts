@@ -55,3 +55,43 @@ export type TopicFile = Entity<{
   title: string;
   file:string;
 }>;
+
+export type QuizQuestion = {
+  id: string;
+  question: string;
+  options: string[];
+};
+
+export type Quiz = Entity<{
+  courseId: string;
+  title: string;
+  totalTimeSeconds: number;
+  questions: QuizQuestion[];
+}>;
+
+export type QuizAnswerInput = {
+  question_id: string;
+  option_ids: string[];
+};
+
+export type SubmitQuizInput = {
+  courseId: string;
+  quizId: string;
+  answers: QuizAnswerInput[];
+};
+
+export type QuizResultItem = {
+  questionId: string;
+  correctOption: string;
+  userOption?: string;
+  isCorrect: boolean;
+};
+
+export type SubmitQuizResponse = {
+  data: {
+    score: number;
+    totalQuestions: number;
+    percentage: number;
+    results: QuizResultItem[];
+  };
+};

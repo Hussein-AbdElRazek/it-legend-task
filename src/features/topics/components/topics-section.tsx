@@ -8,6 +8,7 @@ import { notFound } from 'next/navigation';
 import { useTopics } from '../api/get-topics';
 import { useParams } from 'next/navigation';
 import TopicFileModal from './topic-file';
+import TopicQuizModal from './topic-quiz';
 
 const TopicsSection = () =>
 {
@@ -31,6 +32,7 @@ const TopicsSection = () =>
                 ))}
             </div>
             <TopicFileModal />
+            <TopicQuizModal />
         </>
     )
 }
