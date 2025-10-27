@@ -4,7 +4,6 @@ import Link from 'next/link'
 import React from 'react'
 import { useSearchParams } from 'next/navigation'
 import { BookOpen, MessageSquare, HelpCircle, Trophy } from 'lucide-react'
-import { TooltipProvider } from '@/components/ui/tooltip'
 
 const CourseLinks = () =>
 {
@@ -36,7 +35,7 @@ const CourseLinks = () =>
             icon: <BookOpen />
         },
         {
-            label: 'Discussions',
+            label: 'Comments',
             href: '#comments',
             icon: <MessageSquare />
         },
@@ -53,7 +52,6 @@ const CourseLinks = () =>
     ];
 
     return (
-        <TooltipProvider>
             <nav className="bg-white border-b border-gray-200">
                 <ul className="flex flex-wrap items-center gap-4">
                     {navItems.map((item) =>
@@ -88,7 +86,6 @@ const CourseLinks = () =>
                     })}
                 </ul>
             </nav>
-        </TooltipProvider>
     )
 }
 

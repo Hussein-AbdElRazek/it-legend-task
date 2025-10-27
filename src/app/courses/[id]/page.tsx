@@ -3,8 +3,8 @@ import TopicVideo from '@/features/topics/components/topic-video';
 import TopicsSection from '@/features/topics/components/topics-section';
 import { Suspense } from 'react';
 import { Skeleton } from '@/components/ui';
-import CourseLinks from '@/features/course/components/course-links';
 import CourseMaterials from '@/features/course/components/course-materials';
+import Comments from '@/features/comments/components/comments';
 
 export const generateMetadata = async ({
     params,
@@ -31,12 +31,11 @@ const CourseDetailsPage = async () =>
                 <section className={`lg:col-start-1`}>
                     <CourseMaterials />
                 </section>
-                <section>
-                    <h1>Comments</h1>
+                <section id="comments" className='scroll-mt-[70vw] lg:scroll-mt-0'>
+                    <Comments />
                 </section>
             </div>
-
-            <section className={`lg:col-start-2 lg:row-span-2`}>
+            <section id="curriculum" className={`w-full h-full scroll-mt-[70vw] lg:col-start-2 lg:row-span-2  lg:scroll-mt-0`}>
                 <Suspense fallback={<Skeleton />}>
                     <TopicsSection />
                 </Suspense>
