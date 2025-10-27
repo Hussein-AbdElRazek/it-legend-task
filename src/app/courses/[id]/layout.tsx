@@ -7,7 +7,7 @@ const layout = async ({ children, params }: { children: React.ReactNode, params:
     <div>
       <CourseHeader courseId={id} />
 
-      <div className="px-4 py-4 grid grid-cols-1 gap-12 lg:px-8 lg:grid-cols-[2fr_1fr]  lg:gap-18">
+      <div className="px-4 py-4 grid grid-cols-1 gap-12 justify-start items-start lg:px-8 lg:grid-cols-[2fr_1fr]  lg:gap-18">
         {children}
       </div>
     </div>

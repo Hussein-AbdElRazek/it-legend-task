@@ -9,6 +9,7 @@ import { useTopicsQuery } from '@/features/topics/api/get-topics';
 import { useEffect, useState } from 'react';
 import { VideoPlayerSkeleton } from '@/components/ui';
 import usePlayerSize from '@/features/topics/hooks/use-player-size';
+import CourseLinks from '@/features/course/components/course-links';
 
 const TopicVideo = () =>
 {
@@ -72,17 +73,21 @@ const TopicVideo = () =>
     if (isPending || isFetching)
     {
         return (
-            <section className={`sticky top-0 z-20 lg:row-start-1 lg:static ${isWide ? 'lg:col-span-2' : 'lg:col-start-1'}`}>
+            <section className={`sticky top-0 z-20 lg:static ${isWide ? 'lg:col-span-2 lg:row-start-1' : 'lg:col-start-1 lg:row-start-1'}`}>
                 <VideoPlayerSkeleton />
+                <CourseLinks />
+
             </section>
         )
     }
     return (
-        <section className={`sticky top-0 z-20 lg:row-start-1 lg:static ${isWide ? 'lg:col-span-2' : 'lg:col-start-1'}`}>
+        <section className={`bg-white sticky top-0 z-20 lg:static ${isWide ? 'lg:col-span-2 lg:row-start-1' : 'lg:col-start-1 lg:row-start-1'}`}>
             <VideoPlayer
                 src={topic?.video || ""}
                 title={topic?.title}
-                poster={topic?.poster || ""} />
+                poster={topic?.poster || ""}
+            />
+            <CourseLinks />
         </section>
     )
 }

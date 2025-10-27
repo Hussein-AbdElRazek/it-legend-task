@@ -4,7 +4,7 @@ import { api } from '@/lib/api-client';
 import { QueryConfig } from '@/lib/react-query';
 import { Course } from '@/types/api';
 
-export const getCourse = ({
+export const getCourse =  ({
     courseId: _courseId,
 }: {
     courseId: string;
