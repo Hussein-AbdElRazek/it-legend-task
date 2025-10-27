@@ -7,6 +7,7 @@ type DiscussionFormProps = {
     submitButtonText?: string;
     content: string;
     setContent: (content: string) => void;
+    onChange?: (content: string) => void;
 };
 
 export const DiscussionForm = ({
@@ -16,6 +17,7 @@ export const DiscussionForm = ({
     submitButtonText = "Submit Review",
     content,
     setContent,
+    onChange,
 }: DiscussionFormProps) =>
 {
     const handleSubmit = (e: React.FormEvent) =>
@@ -30,7 +32,10 @@ export const DiscussionForm = ({
         <form onSubmit={handleSubmit} className="mt-8">
             <textarea
                 value={content}
-                onChange={(e) => setContent(e.target.value)}
+                onChange={(e) => {
+                    setContent(e.target.value);
+                    onChange?.(e.target.value);
+                }}
                 placeholder={placeholder}
                 className="w-full p-4  bg-white shadow-[0_10px_40px_rgba(0,0,0,0.05)] rounded resize-none focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all"
                 rows={4}

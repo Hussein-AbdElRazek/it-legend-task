@@ -58,6 +58,10 @@ export const SearchParamModal: React.FC<SearchParamModalProps> = ({
             <DialogContent
                 className={`h-screen w-screen !max-h-screen !max-w-screen ${contentClassName}`}
                 showCloseButton={showCloseButton}
+                onInteractOutside={(e) => {
+                    // Prevent closing when clicking outside the modal
+                    e.preventDefault();
+                }}
             >
                 {title && <DialogHeader>
                     <DialogTitle>{title}</DialogTitle>

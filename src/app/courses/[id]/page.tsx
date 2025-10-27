@@ -5,6 +5,7 @@ import { Suspense } from 'react';
 import { Skeleton } from '@/components/ui';
 import CourseMaterials from '@/features/course/components/course-materials';
 import Comments from '@/features/comments/components/comments';
+import QuestionsModal from '@/features/questions/components/questions-modal';
 
 export const generateMetadata = async ({
     params,
@@ -40,6 +41,7 @@ const CourseDetailsPage = async () =>
                     <TopicsSection />
                 </Suspense>
             </section>
+            <QuestionsModal />
         </>
     );
 }
