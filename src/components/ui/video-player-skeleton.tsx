@@ -9,8 +9,8 @@ export const VideoPlayerSkeleton = () =>
 
             {/* Center play button skeleton */}
             <div className="absolute inset-0 flex items-center justify-center z-10">
-                <div className="w-20 h-20 bg-gray-200 rounded-full flex items-center justify-center animate-pulse">
-                    <div className="w-8 h-8 bg-gray-300 rounded-sm" />
+                <div className="w-16 md:w-24 h-16 md:h-24 bg-gray-200 rounded-full flex items-center justify-center animate-pulse">
+                    <div className="md:w-8 w-6 md:h-8 h-6 bg-gray-300 rounded-sm" />
                 </div>
             </div>
 
@@ -24,33 +24,33 @@ export const VideoPlayerSkeleton = () =>
                 </div>
 
                 {/* Control buttons */}
-                <div className="flex items-center justify-between">
+                <div className="hidden md:flex items-center justify-between">
                     <div className="flex items-center gap-3">
                         {/* Play/Pause button */}
-                        <div className="w-8 h-8 bg-gray-300 rounded animate-pulse" />
+                        <div className="md:w-8 w-6 md:h-8 h-6 bg-gray-300 rounded animate-pulse" />
 
                         {/* Backward 10s button */}
-                        <div className="w-8 h-8 bg-gray-300 rounded animate-pulse" />
+                        <div className="md:w-8 w-6 md:h-8 h-6 bg-gray-300 rounded animate-pulse" />
 
                         {/* Forward 10s button */}
-                        <div className="w-8 h-8 bg-gray-300 rounded animate-pulse" />
+                        <div className="md:w-8 w-6 md:h-8 h-6 bg-gray-300 rounded animate-pulse" />
 
                         {/* Volume button */}
-                        <div className="w-8 h-8 bg-gray-300 rounded animate-pulse" />
+                        <div className="md:w-8 w-6 md:h-8 h-6 bg-gray-300 rounded animate-pulse" />
 
                         {/* Time display */}
                         <div className="w-20 h-4 bg-gray-300 rounded animate-pulse" />
                     </div>
 
-                    <div className="flex items-center gap-3">
+                    <div className="items-center gap-3 hidden md:flex">
                         {/* Settings button */}
-                        <div className="w-8 h-8 bg-gray-300 rounded animate-pulse" />
+                        <div className="md:w-8 w-6 md:h-8 h-6 bg-gray-300 rounded animate-pulse" />
 
                         {/* PIP button */}
-                        <div className="w-8 h-8 bg-gray-300 rounded animate-pulse" />
+                        <div className="md:w-8 w-6 md:h-8 h-6 bg-gray-300 rounded animate-pulse" />
 
                         {/* Fullscreen button */}
-                        <div className="w-8 h-8 bg-gray-300 rounded animate-pulse" />
+                        <div className="md:w-8 w-6 md:h-8 h-6 bg-gray-300 rounded animate-pulse" />
                     </div>
                 </div>
             </div>

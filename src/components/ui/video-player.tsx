@@ -16,7 +16,7 @@ import
 import "@vidstack/react/player/styles/default/layouts/video.css";
 import "@vidstack/react/player/styles/default/theme.css";
 import { PlayIcon, Maximize2, Minimize2 } from "lucide-react";
-import { useEffect, useState } from "react";
+import { usePlayerSize } from "@/contexts/player-size-context";
 interface VideoPlayerProps
 {
     src: string;
@@ -31,7 +31,7 @@ const CustomPosterLayer = () =>
         <div className="custom-overlay cursor-pointer absolute inset-0 z-20">
             <Poster className="vds-poster" />
             <div className="w-full h-full absolute inset-0 flex items-center justify-center z-20 bg-black/40 transition-all duration-200">
-                <div className="group cursor-pointer w-20 h-20 bg-white rounded-full flex items-center justify-center transition-all duration-200 z-20 hover:scale-110 hover:bg-red-500">
+                <div className="group cursor-pointer md:w-20 md:h-20 w-16 h-16 bg-white rounded-full flex items-center justify-center transition-all duration-200 z-20 hover:scale-110 hover:bg-red-500">
                     <PlayIcon className="fill-red-500 text-red-500 group-hover:text-white group-hover:fill-white transition-all duration-200" />
                 </div>
             </div>
@@ -46,31 +46,7 @@ export const VideoPlayer = ({
     className,
 }: VideoPlayerProps) =>
 {
-    const [isWide, setIsWide] = useState(false);
-
-    useEffect(() =>
-    {
-        if (typeof window === 'undefined') return;
-        setIsWide(localStorage.getItem('wide') === '1');
-        const onChange = () => setIsWide(localStorage.getItem('wide') === '1');
-        window.addEventListener('wide-mode-changed', onChange as EventListener);
-        window.addEventListener('storage', onChange);
-        return () =>
-        {
-            window.removeEventListener('wide-mode-changed', onChange as EventListener);
-            window.removeEventListener('storage', onChange);
-        };
-    }, []);
-
-    const toggleWide = () =>
-    {
-        if (typeof window === 'undefined') return;
-        const next = !isWide;
-        if (next) localStorage.setItem('wide', '1');
-        else localStorage.removeItem('wide');
-        setIsWide(next);
-        window.dispatchEvent(new Event('wide-mode-changed'));
-    };
+    const { isWide, toggleWide } = usePlayerSize();
 
     return (
         <MediaPlayer
@@ -94,7 +70,7 @@ export const VideoPlayer = ({
                                 <button
                                     type="button"
                                     onClick={toggleWide}
-                                    className="vds-button"
+                                    className="vds-button wide-button"
                                     aria-label={isWide ? 'Exit wide mode' : 'Enter wide mode'}
                                 >
                                     {isWide ? (

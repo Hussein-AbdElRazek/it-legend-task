@@ -70,16 +70,16 @@ const CourseLinks = () =>
                                 >
                                     <span className={`
                                         flex items-center justify-center 
-                                        w-10 h-10 rounded-full mb-1
+                                        lg:w-10 lg:h-10 w-8 h-8 rounded-full mb-1
                                          group-hover:border-2 group-hover:border-blue-600
                                         border border-gray-300
                                         transition-colors duration-200
                                     `}>
                                         {React.cloneElement(item.icon, {
-                                            className: `w-5 h-5 group-hover:text-blue-600 text-gray-600 transition-colors duration-200`
+                                            className: `lg:w-5 lg:h-5 w-4 h-4 group-hover:text-blue-600 text-gray-600 transition-colors duration-200`
                                         })}
                                     </span>
-                                    <span className="text-xs font-medium">{item.label}</span>
+                                    <span className="lg:text-sm text-xs font-medium">{item.label}</span>
                                 </Link>
                             </li>
                         );

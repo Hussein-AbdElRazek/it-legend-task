@@ -27,6 +27,7 @@ const TopicFileModal = () =>
         <SearchParamModal
             paramKey='fileId'
             title={topicFile?.title}
+            contentClassName='items-start justify-start flex flex-col'
         >
             {isLoading && (
                 <div className="w-full h-[70vh] max-h-full max-w-full">

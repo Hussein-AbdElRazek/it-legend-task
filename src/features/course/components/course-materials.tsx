@@ -42,7 +42,7 @@ const CourseMaterials = () =>
     ]
 
     return (
-        <>
+        <section className="lg:col-start-1 lg:row-start-2">
             <SectionTitle title="Course Materials" />
 
             <div className="bg-white p-6 shadow-[0_10px_40px_rgba(0,0,0,0.05)]">
@@ -73,7 +73,7 @@ const CourseMaterials = () =>
                     </div>
                 </div>
             </div>
-        </>
+        </section>
     )
 }
 

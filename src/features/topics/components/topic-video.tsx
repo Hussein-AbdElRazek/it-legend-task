@@ -2,13 +2,13 @@
 
 import { VideoPlayer } from '@/components/ui'
 import { useTopic } from '@/features/topics/api/get-topic';
-import { CourseTopics, Topic } from '@/types/api';
+import { Topic } from '@/types/api';
 import { notFound, useParams } from 'next/navigation';
 import { useSearchParams, useRouter } from 'next/navigation';
-import { useTopicsQuery } from '@/features/topics/api/get-topics';
+import { useTopics } from '@/features/topics/api/get-topics';
 import { useEffect, useState } from 'react';
 import { VideoPlayerSkeleton } from '@/components/ui';
-import usePlayerSize from '@/features/topics/hooks/use-player-size';
+import {usePlayerSize} from '@/contexts/player-size-context';
 import CourseLinks from '@/features/course/components/course-links';
 
 const TopicVideo = () =>
@@ -23,7 +23,7 @@ const TopicVideo = () =>
     const [topicId, setTopicId] = useState<string>(searchParamsTopicId);
 
     // get topics to extract first topic id if searchParamsTopicId is not provided
-    const { refetch } = useTopicsQuery({
+    const { refetch } = useTopics({
         params: {
             courseId,
         },
@@ -67,21 +67,20 @@ const TopicVideo = () =>
     }, [searchParamsTopicId, topicId])
 
     const topic: Topic | undefined = data?.data;
-    const isWide = usePlayerSize();
+    const { isWide } = usePlayerSize();
 
     if (!topic && !isPending && !isFetching) return notFound();
     if (isPending || isFetching)
     {
         return (
-            <section className={`sticky top-0 z-20 lg:static ${isWide ? 'lg:col-span-2 lg:row-start-1' : 'lg:col-start-1 lg:row-start-1'}`}>
+            <section className={`sticky top-0 z-20 sm:static lg:col-start-1 lg:row-start-1 ${isWide ? 'lg:col-span-2' : ''}`}>
                 <VideoPlayerSkeleton />
                 <CourseLinks />
-
             </section>
         )
     }
     return (
-        <section className={`bg-white sticky top-0 z-20 lg:static ${isWide ? 'lg:col-span-2 lg:row-start-1' : 'lg:col-start-1 lg:row-start-1'}`}>
+        <section className={`bg-white sticky top-0 z-20 sm:static lg:col-start-1 lg:row-start-1 ${isWide ? 'lg:col-span-2' : ''}`}>
             <VideoPlayer
                 src={topic?.video || ""}
                 title={topic?.title}

@@ -10,7 +10,8 @@ import { Comment } from '@/types/api';
 
 const INITIAL_DISPLAY_COUNT = 3;
 
-const Comments = () => {
+const Comments = () =>
+{
     const params = useParams();
     const courseId = params.id as string;
     const [newComments, setNewComments] = useState<Comment[]>([]);
@@ -27,7 +28,8 @@ const Comments = () => {
     });
 
     const { mutate: createComment, isPending: isSubmitting } = useCreateComment({
-        onSuccess: (newComment) => {
+        onSuccess: (newComment) =>
+        {
             // Add new comment to local state (optimistic update)
             setNewComments((prev) => [newComment, ...prev]);
             setNewComment('');
@@ -43,7 +45,8 @@ const Comments = () => {
     const displayedComments = showAll ? allComments : allComments.slice(0, INITIAL_DISPLAY_COUNT);
     const hasMoreToShow = allComments.length > INITIAL_DISPLAY_COUNT && !showAll;
 
-    const handleSubmit = (content: string) => {
+    const handleSubmit = (content: string) =>
+    {
         createComment({
             courseId,
             userName: 'Student Name Goes Here',
@@ -52,7 +55,10 @@ const Comments = () => {
     };
     const [newComment, setNewComment] = useState('');
     return (
-        <>
+        <section
+            id="comments"
+            className={`scroll-mt-[56.5vw] sm:scroll-mt-0 lg:col-start-1 lg:row-start-3`}
+        >
             <SectionTitle title="Comments" />
             <>
                 {isLoading ? (
@@ -66,11 +72,11 @@ const Comments = () => {
                         <div className="mb-4 text-sm text-gray-600">
                             Showing {displayedComments.length} of {totalComments} comments
                         </div>
-                        <DiscussionList 
-                            items={displayedComments} 
+                        <DiscussionList
+                            items={displayedComments}
                             emptyMessage="No comments yet. Be the first to comment!"
                         />
-                        
+
                         {/* Load More button after initial 3 comments */}
                         {hasMoreToShow && (
                             <div className="py-8 text-center">
@@ -102,7 +108,7 @@ const Comments = () => {
                             </div>
                         )}
 
-                        <DiscussionForm 
+                        <DiscussionForm
                             onSubmit={handleSubmit}
                             isSubmitting={isSubmitting}
                             placeholder="Write a comment"
@@ -113,7 +119,7 @@ const Comments = () => {
                     </>
                 )}
             </>
-        </>
+        </section>
     );
 };
 

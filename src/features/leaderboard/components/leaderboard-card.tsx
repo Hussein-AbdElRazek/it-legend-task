@@ -25,7 +25,7 @@ const LeaderboardCard = ({ user, isCurrentUser }: LeaderboardCardProps) => {
 
     return (
         <div
-            className={`flex items-center gap-4 p-4 rounded-lg transition-all duration-300 ${
+            className={`flex items-center gap-2 lg:gap-4 p-4 rounded-lg transition-all duration-300 ${
                 isCurrentUser
                     ? 'bg-blue-50 border-2 border-blue-400 shadow-md'
                     : 'bg-white border border-gray-200 hover:shadow-md'

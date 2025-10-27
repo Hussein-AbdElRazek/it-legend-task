@@ -25,8 +25,9 @@ const LeaderboardModal = () => {
             paramKey="leaderboardOpened"
             title='leaderboard'
             hideTitle={true}
+            contentClassName='p-0 sm:p-8'
         >
-            <div className="max-w-[600px] mx-auto border border-gray-200 rounded-lg p-4"> 
+            <div className="max-w-[600px] mx-auto border border-gray-200 rounded-lg lg:p-4 p-1 "> 
             <div className="text-center mb-6 !text-[#374785]">
                 <CourseTitle courseId={courseId} className="!text-xl !font-semibold mb-2" />
                 <h2 className="text-lg font-bold mb-4">Leaderboard</h2>
@@ -50,7 +51,7 @@ const LeaderboardModal = () => {
             )}
 
             {!isLoading && data?.data && (
-                    <div className="space-y-4 p-4">
+                    <div className="space-y-4 lg:p-4 p-2">
                     {data.data.message && (
                             <div className="flex items-center justify-center gap-2 bg-[#F7FBFD] rounded-lg p-5  mb-14">
                             <p className="text-sm text-gray-600 mb-2 font-medium">{data.data.message}</p>

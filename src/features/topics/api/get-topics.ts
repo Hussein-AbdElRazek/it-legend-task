@@ -40,17 +40,6 @@ export const useTopics = ({
     queryConfig,
 }: UseTopicOptions) =>
 {
-    return useSuspenseQuery({
-        ...getTopicQueryOptions(params.courseId),
-        ...queryConfig,
-    });
-};
-
-export const useTopicsQuery = ({
-    params,
-    queryConfig,
-}: UseTopicOptions) =>
-{
     return useQuery({
         ...getTopicQueryOptions(params.courseId),
         ...queryConfig,

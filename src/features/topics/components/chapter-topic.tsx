@@ -10,7 +10,7 @@ const TopicItem = ({ topic }: { topic: ChapterTopicType }) =>
 {
     return (
         <>
-            <div className="flex items-center gap-2 flex-1">
+            <div className="flex items-center gap-2 flex-1 min-w-28">
                 <FileText className="w-4 h-4 shrink-0 text-gray-700" />
                 <span className="text-md font-light text-gray-700">
                     {topic.title}
