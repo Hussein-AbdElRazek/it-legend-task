@@ -6,6 +6,7 @@ import { Skeleton } from '@/components/ui';
 import CourseMaterials from '@/features/course/components/course-materials';
 import Comments from '@/features/comments/components/comments';
 import QuestionsModal from '@/features/questions/components/questions-modal';
+import LeaderboardModal from '@/features/leaderboard/components/leaderboard-section';
 
 export const generateMetadata = async ({
     params,
@@ -42,6 +43,7 @@ const CourseDetailsPage = async () =>
                 </Suspense>
             </section>
             <QuestionsModal />
+            <LeaderboardModal />
         </>
     );
 }

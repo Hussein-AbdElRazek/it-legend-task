@@ -1,12 +1,12 @@
 "use client"
 
-import { useParams } from 'next/navigation';
+import { useParams, useSearchParams } from 'next/navigation';
 import { useComments as useGetQuestions } from '../../comments/api/get-comments';
 import { useCreateComment as useCreateQuestion } from '../../comments/api/create-comment';
 import { SearchParamModal } from '@/components/ui';
 import { DiscussionList, DiscussionForm, DiscussionSkeleton } from '@/components/discussion';
 import { useState } from 'react';
-import { Comment as Question } from '@/types/api';
+import { Comment as Question, CommentsResponse } from '@/types/api';
 
 const INITIAL_DISPLAY_COUNT = 3;
 
@@ -14,6 +14,8 @@ const QuestionsModal = () =>
 {
     const params = useParams();
     const courseId = params.id as string;
+    const searchParams = useSearchParams();
+    const questionOpened = searchParams.get('questionOpened');
     const [newQuestions, setNewQuestions] = useState<Question[]>([]);
     const [showAll, setShowAll] = useState(false);
 
@@ -25,6 +27,7 @@ const QuestionsModal = () =>
         isFetchingNextPage,
     } = useGetQuestions({
         courseId,
+        enabled: !!courseId && !!questionOpened,
     });
 
     const { mutate: createQuestion, isPending: isSubmitting } = useCreateQuestion({
@@ -40,7 +43,7 @@ const QuestionsModal = () =>
     });
 
     // Flatten all comments from all pages and combine with new comments
-    const fetchedComments = data?.pages.flatMap((page) => page.comments) || [];
+    const fetchedComments = data?.pages.flatMap((page: CommentsResponse) => page.comments) || [];
     const allComments = [...newQuestions, ...fetchedComments];
     const totalComments = (data?.pages[0]?.total || 0) + newQuestions.length;
 

@@ -122,3 +122,19 @@ export type CreateCommentInput = {
   userName: string;
   content: string;
 };
+
+export type LeaderboardUser = {
+  id: string;
+  name: string;
+  progress: number;
+  rank: number;
+  avatar?: string;
+};
+
+export type LeaderboardResponse = {
+  data: {
+    users: LeaderboardUser[];
+    currentUser?: LeaderboardUser;
+    message?: string;
+  };
+};

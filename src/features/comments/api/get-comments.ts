@@ -1,4 +1,4 @@
-import { useInfiniteQuery } from '@tanstack/react-query';
+import { useInfiniteQuery, UseInfiniteQueryOptions } from '@tanstack/react-query';
 import { api } from '@/lib/api-client';
 import { CommentsResponse } from '@/types/api';
 
@@ -23,20 +23,22 @@ export const getComments = async ({
 
 type UseCommentsOptions = {
     courseId: string;
+    enabled?: boolean;
 };
 
-export const useComments = ({ courseId: _courseId }: UseCommentsOptions) => {
+export const useComments = ({ courseId: _courseId, enabled = true }: UseCommentsOptions) => {
     return useInfiniteQuery({
-        queryKey: ['comments'],
-        queryFn: ({ pageParam = 0 }) =>
+        queryKey: ['comments'] as const,
+        queryFn: ({ pageParam }) =>
             getComments({
-                skip: pageParam,
+                skip: pageParam as number,
                 limit: COMMENTS_PER_PAGE,
             }),
-        getNextPageParam: (lastPage) => {
+        getNextPageParam: (lastPage): number | undefined => {
             const nextSkip = lastPage.skip + lastPage.limit;
             return nextSkip < lastPage.total ? nextSkip : undefined;
         },
         initialPageParam: 0,
+        enabled,
     });
 };

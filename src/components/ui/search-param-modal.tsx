@@ -9,6 +9,7 @@ import
     DialogHeader,
     DialogTitle,
 } from "@/components/ui/dialog";
+import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 
 interface SearchParamModalProps
 {
@@ -18,6 +19,7 @@ interface SearchParamModalProps
     onClose?: () => void;
     contentClassName?: string;
     showCloseButton?: boolean;
+    hideTitle?: boolean;
 }
 
 /**
@@ -30,6 +32,7 @@ export const SearchParamModal: React.FC<SearchParamModalProps> = ({
     onClose,
     contentClassName = "",
     showCloseButton = true,
+    hideTitle = false,
 }) =>
 {
     const searchParams = useSearchParams();
@@ -63,9 +66,11 @@ export const SearchParamModal: React.FC<SearchParamModalProps> = ({
                     e.preventDefault();
                 }}
             >
-                {title && <DialogHeader>
+                {!hideTitle ? <DialogHeader>
                     <DialogTitle>{title}</DialogTitle>
-                </DialogHeader>}
+                </DialogHeader> : <VisuallyHidden>
+                        <DialogTitle>{title}</DialogTitle>
+                    </VisuallyHidden>}
 
                 <div className="w-full h-full overflow-auto">{children}</div>
 
