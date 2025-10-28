@@ -45,8 +45,14 @@
 
 body {
   overflow: auto;
-  height: 100vh;
-  height: 100dvh;
+  height: 100vh; /* Fallback for older browsers */
+  height: 100dvh; /* Modern browsers with dynamic viewport */
+  
+  /* Fallback for browsers that don't support dvh */
+  @supports not (height: 100dvh) {
+    height: 100vh;
+    height: calc(var(--vh, 1vh) * 100);
+  }
 }
 
 /* Hide overlay when video starts */

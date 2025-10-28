@@ -19,14 +19,11 @@ export const getTopic = async ({
     {
         if (topicId === '1')
         {
-            return api.get(`c/f42e-18f4-453e-a6b2`);
+            return api.get(`c/5f12-1f87-4320-9185`);
         }
-        else if (topicId === '5')
+         else
         {
-            return api.get(`c/3f59-ddfc-49a6-8fa2`);
-        } else
-        {
-            return api.get(`c/3f59-ddfc-49a6-8fa2`);
+            return api.get(`c/63b8-6ffd-428c-bcf1`);
         }
     }
     throw new Error('Missing courseId or topicId');

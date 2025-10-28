@@ -19,7 +19,7 @@ export const QuizHeader: React.FC<QuizHeaderProps> = ({
   formattedTime
 }) => {
   return (
-    <div className="bg-gradient-to-r from-blue-600 to-blue-700 text-white px-6 py-4 flex items-center justify-between rounded-t-lg">
+    <div className="bg-blue-600 bg-gradient-to-r from-blue-600 to-blue-700 text-white px-6 py-4 flex items-center justify-between rounded-t-lg">
       <button
         onClick={onPrev}
         disabled={current === 0}

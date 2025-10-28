@@ -20,13 +20,13 @@ export const QuizResults: React.FC<Props> = ({ title, totalQuestions, score, que
         <p className="text-gray-600">Here are your results</p>
       </div>
 
-      <div className="bg-gradient-to-br from-blue-600 to-blue-700 text-white rounded-2xl p-8 text-center shadow-lg">
+      <div className="bg-blue-600 bg-gradient-to-br from-blue-600 to-blue-700 text-white rounded-2xl p-8 text-center shadow-lg">
         <p className="text-lg mb-2 opacity-90">Your Score</p>
         <p className="text-5xl font-bold mb-2">{score}/{totalQuestions}</p>
         <p className="text-lg opacity-90">{Math.round((score / totalQuestions) * 100)}%</p>
       </div>
 
-      <div className="space-y-4 max-h-[40vh] overflow-y-auto">
+      <div className="space-y-4 max-h-[40vh] overflow-y-auto" style={{ maxHeight: 'min(40vh, 40dvh)' }}>
         {questions.map((question, index) => {
           const res = results.find(r => r.questionId === question.id);
           const userAnswer = userAnswers[question.id];

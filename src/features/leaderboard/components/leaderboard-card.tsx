@@ -57,7 +57,7 @@ const LeaderboardCard = ({ user, isCurrentUser }: LeaderboardCardProps) => {
                         className="w-12 h-12 rounded-full object-cover border-2 border-gray-200"
                     />
                 ) : (
-                    <div className="w-12 h-12 rounded-full bg-gradient-to-br from-blue-400 to-purple-500 flex items-center justify-center text-white font-bold text-lg">
+                    <div className="w-12 h-12 rounded-full bg-blue-500 bg-gradient-to-br from-blue-400 to-purple-500 flex items-center justify-center text-white font-bold text-lg">
                         {user.name.charAt(0).toUpperCase()}
                     </div>
                 )}
@@ -78,7 +78,7 @@ const LeaderboardCard = ({ user, isCurrentUser }: LeaderboardCardProps) => {
                 <div className="mt-1 flex items-center gap-2">
                     <div className="flex-1 h-2 bg-gray-200 rounded-full overflow-hidden">
                         <div
-                            className="h-full bg-gradient-to-r from-green-400 to-green-600 rounded-full transition-all duration-500"
+                            className="h-full bg-green-500 bg-gradient-to-r from-green-400 to-green-600 rounded-full transition-all duration-500"
                             style={{ width: `${user.progress}%` }}
                         />
                     </div>

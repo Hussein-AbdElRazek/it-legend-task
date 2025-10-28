@@ -5,7 +5,7 @@ export const VideoPlayerSkeleton = () =>
             className={`relative w-full aspect-video bg-gray-100 rounded-lg overflow-hidden`}
         >
             {/* Background shimmer effect */}
-            <div className="absolute inset-0 bg-gradient-to-r from-gray-100 via-gray-200 to-gray-100 animate-[shimmer_2s_infinite] bg-[length:200%_100%]" />
+            <div className="absolute inset-0 bg-gray-200 bg-gradient-to-r from-gray-100 via-gray-200 to-gray-100 animate-[shimmer_2s_infinite] bg-[length:200%_100%]" />
 
             {/* Center play button skeleton */}
             <div className="absolute inset-0 flex items-center justify-center z-10">
@@ -15,7 +15,7 @@ export const VideoPlayerSkeleton = () =>
             </div>
 
             {/* Bottom controls bar skeleton */}
-            <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-white/70 to-transparent">
+            <div className="absolute bottom-0 left-0 right-0 p-4 bg-white/50 bg-gradient-to-t from-white/70 to-transparent">
                 {/* Progress bar */}
                 <div className="mb-3">
                     <div className="w-full h-1 bg-gray-300 rounded-full overflow-hidden">

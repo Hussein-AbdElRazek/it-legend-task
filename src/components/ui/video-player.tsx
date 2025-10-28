@@ -56,6 +56,7 @@ export const VideoPlayer = ({
             className="aspect-video max-h-[90vh]"
             playsInline
             fullscreenOrientation="landscape"
+            muted
         >
             <MediaProvider className="relative">
                 <CustomPosterLayer />

@@ -24,7 +24,7 @@ const TopicsSection = () =>
     return (
         <section
             id="curriculum"
-            className={`w-full h-full scroll-mt-[70vw] sm:scroll-mt-0 ${isWide
+            className={`w-full h-full scroll-mt-[80vw] sm:scroll-mt-0 ${isWide
                 ? 'lg:col-start-2 lg:row-start-2 lg:row-span-2'
                 : 'lg:col-start-2 lg:row-start-1 lg:row-span-3'
                 }`}

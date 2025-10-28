@@ -10,6 +10,7 @@ import
     DialogTitle,
 } from "@/components/ui/dialog";
 import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
+import { DialogDescription } from "@radix-ui/react-dialog";
 
 interface SearchParamModalProps
 {
@@ -59,18 +60,25 @@ export const SearchParamModal: React.FC<SearchParamModalProps> = ({
     return (
         <Dialog open={open} onOpenChange={handleClose} >
             <DialogContent
-                className={`h-screen w-screen !max-h-screen !max-w-screen ${contentClassName}`}
+                className={`h-screen w-screen max-h-screen !max-w-screen supports-[height:100dvh]:h-[100dvh] supports-[height:100dvh]:max-h-[100dvh] ${contentClassName}`}
                 showCloseButton={showCloseButton}
-                onInteractOutside={(e) => {
+                onInteractOutside={(e) =>
+                {
                     // Prevent closing when clicking outside the modal
                     e.preventDefault();
                 }}
             >
-                {!hideTitle ? <DialogHeader>
-                    <DialogTitle>{title}</DialogTitle>
-                </DialogHeader> : <VisuallyHidden>
+                {!hideTitle ? (
+                    <DialogHeader>
                         <DialogTitle>{title}</DialogTitle>
-                    </VisuallyHidden>}
+                        <DialogDescription className="sr-only">{title}</DialogDescription>
+                    </DialogHeader>
+                ) : (
+                    <VisuallyHidden>
+                        <DialogTitle>{title}</DialogTitle>
+                        <DialogDescription className="sr-only">{title}</DialogDescription>
+                    </VisuallyHidden>
+                )}
 
                 <div className="w-full h-full overflow-auto">{children}</div>
 

@@ -57,7 +57,7 @@ const Comments = () =>
     return (
         <section
             id="comments"
-            className={`scroll-mt-[56.5vw] sm:scroll-mt-0 lg:col-start-1 lg:row-start-3`}
+            className={`scroll-mt-[80vw] sm:scroll-mt-0 lg:col-start-1 lg:row-start-3`}
         >
             <SectionTitle title="Comments" />
             <>
